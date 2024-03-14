@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  boot:
+    admin:
+      client:
+        instance:
+          name: sample-api
+          service-url: http://localhost:8081
+        url: http://localhost:8090
+        auto-deregistration: true
+        auto-registration: true
+        username: admin
+        password: 1234
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

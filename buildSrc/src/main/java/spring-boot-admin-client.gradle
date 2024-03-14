@@ -1,0 +1,7 @@
+plugins {
+    id 'base.spring-boot-admin-conventions'
+}
+
+dependencies {
+    implementation 'de.codecentric:spring-boot-admin-starter-client'
+}

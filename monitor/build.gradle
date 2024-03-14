@@ -1,0 +1,8 @@
+plugins {
+    id 'base.java-conventions'
+    id 'spring-boot-admin-server'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+}

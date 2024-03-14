@@ -1,0 +1,8 @@
+plugins {
+    id 'base.spring-boot-admin-conventions'
+}
+
+dependencies {
+    implementation 'de.codecentric:spring-boot-admin-starter-server'
+    implementation 'io.netty:netty-resolver-dns-native-macos:4.1.68.Final:osx-aarch_64'
+}

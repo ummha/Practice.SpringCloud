@@ -1,0 +1,12 @@
+server:
+  port: 8090
+
+spring:
+  boot:
+    admin:
+      monitor:
+        default-timeout: 10000ms
+  security:
+    user:
+      name: admin
+      password: 1234

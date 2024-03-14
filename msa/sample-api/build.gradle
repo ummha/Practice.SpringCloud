@@ -1,0 +1,5 @@
+plugins {
+    id 'base.java-conventions'
+    id 'msa-web'
+    id 'spring-boot-admin-client'
+}
