@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: ${EUREKA_URL:http://localhost:8761/eureka/}
+    region: ko-KR
+    disable-delta: true
+    registry-fetch-interval-seconds: 1
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}:${random.value}}
+    # 유레카 등록 시 host name 대신 ip 주소 사용
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+
+sensitiveHeaders: Authorization, Set-Cookie
+
+spring:
+  application:
+    name: gateway-service
+#  data:
+#    redis:
+#      port: 6379
+#      host: localhost
+#      client-type: lettuce
+#  session:
+#    store-type: redis
+#    redis:
+#      configure-action: none
+  cloud:
+    gateway:
+      default-filters:
+#        - name: GlobalFilter #Global Filter로 지정된 java 파일 이름
+#          args:
+#            baseMessage: Spring Cloud Gateway Global Filter
+#            preLogger: true
+#            postLogger: true
+      routes:
+        - id: sample-api
+          uri: lb://SAMPLE-API
+          predicates:
+            - Path=/**
+          filters:
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

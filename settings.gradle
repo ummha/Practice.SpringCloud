@@ -1,4 +1,6 @@
 rootProject.name = 'SpringCloud'
 
+include 'cloud:gateway'
+include 'cloud:discovery'
 include 'monitor'
 include 'msa:sample-api'

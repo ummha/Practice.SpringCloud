@@ -1,22 +1,43 @@
 server:
-  port: 8081
+  port: 0
 
 spring:
-  boot:
-    admin:
-      client:
-        instance:
-          name: sample-api
-          service-url: http://localhost:8081
-        url: http://localhost:8090
-        auto-deregistration: true
-        auto-registration: true
-        username: admin
-        password: 1234
+  application:
+    name: sample-api
+#  boot:
+#    admin:
+#      client:
+#        instance:
+#          name: sample-api
+#          service-url: http://localhost:8081
+#        url: http://localhost:8090
+#        auto-deregistration: true
+#        auto-registration: true
+#        username: admin
+#        password: 1234
   data:
     redis:
       host: localhost
       port: 6379
+  cloud:
+    loadbalancer:
+      enabled: false
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      # 유레카 클라이언트가 서비스를 등록할 서버 주소를 지정하기 위해 사용함
+      default-zone: ${EUREKA_URL:http://localhost:8761/eureka/}
+    region: ko-KR
+    disable-delta: true
+    registry-fetch-interval-seconds: 10
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}:${random.value}}
+    # 유레카 등록 시 host name 대신 ip 주소 사용
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
 
 management:
   endpoints:

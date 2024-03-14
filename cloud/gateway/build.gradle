@@ -1,6 +1,8 @@
 plugins {
     id 'base.java-conventions'
-    id 'msa-web'
-    id 'spring-boot-admin-client'
+    id 'spring-cloud-gateway'
     id 'spring-cloud-discovery-client'
+}
+
+dependencies {
 }
